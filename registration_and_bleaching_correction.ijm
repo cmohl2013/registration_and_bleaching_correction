@@ -15,20 +15,19 @@ christoph.moehl@dzne.de
 
 //####initialization
 
-input_dir = "/user_docs_local/documents_local/Images/2911 2/submission/data/"; //folder with single z slices
-output_dir = "/user_docs_local/documents_local/Images/2911 2/submission/data/reg"; //folder to save corrected image stack
+input_dir_frame01 = getDirectory("choose directory with images of frame 1"); //folder with single z slices
+input_dir_frame02 = getDirectory("choose directory with images of frame 2"); //folder with single z slices
+output_dir = getDirectory("choose output directory"); //folder to save corrected image stack
 
 n_zslices = 101; // nr of z slices
 
-// names of subfolders for each time frame
-dir_frame0 = "CFP0";
-dir_frame1 = "CFP1";
+
 
 
 //####import
-run("Image Sequence...", "open=[" + input_dir + dir_frame0 + "] number=" + n_zslices + " starting=1 increment=1 scale=100 file=[] sort");
+run("Image Sequence...", "open=[" + input_dir_frame01 + "] number=" + n_zslices + " starting=1 increment=1 scale=100 file=[] sort");
 title_frame0 = getTitle(); 
-run("Image Sequence...", "open=[" + input_dir + dir_frame1 + "] number=" + n_zslices + " starting=1 increment=1 scale=100 file=[] sort");
+run("Image Sequence...", "open=[" + input_dir_frame02 + "] number=" + n_zslices + " starting=1 increment=1 scale=100 file=[] sort");
 title_frame1 = getTitle();
 
 
